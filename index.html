@@ -28,6 +28,66 @@
         </div>
     </main>
 
+    <section class="twitch-support">
+        <h2 class="center-title">TWITCH DEAF</h2>
+        <h3 class="section-title"><i class="fa-brands fa-twitch icon"></i> DEAF — Поддержка TWITCH</h3>
+        <ul class="streamers">
+            <li><a href="https://www.twitch.tv/tasmadan" target="_blank" rel="noopener"><img class="stream-avatar" data-name="tasmadan" alt=""><span class="stream-status" data-name="tasmadan"></span>Tasmadan</a></li>
+            <li><a href="https://www.twitch.tv/lediya112" target="_blank" rel="noopener"><img class="stream-avatar" data-name="lediya112" alt=""><span class="stream-status" data-name="lediya112"></span>LeDiya112</a></li>
+            <li><a href="https://www.twitch.tv/kingbumixa" target="_blank" rel="noopener"><img class="stream-avatar" data-name="kingbumixa" alt=""><span class="stream-status" data-name="kingbumixa"></span>KingBumixa</a></li>
+            <li><a href="https://www.twitch.tv/sm1lezombie" target="_blank" rel="noopener"><img class="stream-avatar" data-name="sm1lezombie" alt=""><span class="stream-status" data-name="sm1lezombie"></span>Sm1lezombie</a></li>
+            <li><a href="https://www.twitch.tv/prokop1000" target="_blank" rel="noopener"><img class="stream-avatar" data-name="prokop1000" alt=""><span class="stream-status" data-name="prokop1000"></span>prokop1000</a></li>
+            <li><a href="https://www.twitch.tv/rlvan" target="_blank" rel="noopener"><img class="stream-avatar" data-name="rlvan" alt=""><span class="stream-status" data-name="rlvan"></span>Rlvan</a></li>
+            <li><a href="https://www.twitch.tv/baiiervlr777" target="_blank" rel="noopener"><img class="stream-avatar" data-name="baiiervlr777" alt=""><span class="stream-status" data-name="baiiervlr777"></span>baiiervlr777</a></li>
+        </ul>
+        <p class="soon">Soon...</p>
+        <div class="status-loading" id="status-loading">
+            <span class="loader"></span>
+            Загрузка статуса...
+        </div>
+    </section>
+
+    <script>
+        var statusEls = document.querySelectorAll(".stream-status");
+        var loading = document.getElementById("status-loading");
+        var done = 0;
+
+        statusEls.forEach(function (el) {
+            fetch("https://api.ivr.fi/v2/twitch/user?login=" + el.dataset.name)
+                .then(function (r) {
+                    return r.json();
+                })
+                .then(function (data) {
+                    var user = data[0];
+                    var avatar = document.querySelector('.stream-avatar[data-name="' + el.dataset.name + '"]');
+                    if (user && user.logo && avatar) {
+                        avatar.src = user.logo;
+                    }
+                    if (user && user.stream) {
+                        el.classList.add("online");
+                    } else {
+                        el.classList.add("offline");
+                    }
+                })
+                .catch(function () {
+                    el.classList.add("offline");
+                })
+                .then(function () {
+                    done++;
+                    if (done >= statusEls.length) {
+                        loading.style.display = "none";
+                    }
+                });
+        });
+
+        function checkDone() {
+            done++;
+            if (done >= statusEls.length) {
+                loading.style.display = "none";
+            }
+        }
+    </script>
+
     <script>
         document.getElementById("steam-btn").addEventListener("click", function (e) {
             e.preventDefault();
@@ -39,12 +99,6 @@
                     window.location.href = profile;
                 }
             }, 1200);
-        });
-
-        document.getElementById("donation-btn").addEventListener("click", function (e) {
-            e.preventDefault();
-            var panel = document.getElementById("donate-amounts");
-            panel.classList.toggle("open");
         });
     </script>
 </body>
