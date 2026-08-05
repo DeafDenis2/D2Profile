@@ -13,28 +13,10 @@ html {
     scroll-behavior: smooth;
 }
 
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: #12071f;
-}
-
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #7b2ff7, #2d0a4e);
-    border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #7b2ff7;
-}
-
 body {
     min-height: 100vh;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 20px;
@@ -42,6 +24,19 @@ body {
     font-family: "Segoe UI", Arial, "Noto Color Emoji", sans-serif;
     background: linear-gradient(135deg, #2d0a4e 0%, #1a0b2e 50%, #000 100%);
     color: #fff;
+}
+
+.blocks {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 1300px;
 }
 
 #matrix {
@@ -53,12 +48,13 @@ body {
 .profile {
     position: relative;
     z-index: 1;
+    animation: fadeUp 0.6s ease both;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(150, 60, 255, 0.3);
     border-radius: 20px;
-    padding: 40px;
-    width: 100%;
-    max-width: 400px;
+    padding: 24px;
+    width: 400px;
+    height: 500px;
     text-align: center;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(150, 60, 255, 0.15);
 }
@@ -112,6 +108,11 @@ body {
     font-weight: 700;
     margin-bottom: 6px;
     animation: blink 1.2s step-start infinite;
+    background: linear-gradient(90deg, #7b2ff7, #66c0f4, #7b2ff7);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 @keyframes blink {
@@ -140,11 +141,14 @@ body {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 14px 20px;
+    width: 100%;
+    min-height: 46px;
+    padding: 11px 16px;
     border-radius: 10px;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
+    white-space: nowrap;
     color: #fff;
     transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.15s ease;
 }
@@ -214,6 +218,31 @@ body {
     display: inline-block;
 }
 
+.cursor {
+    animation: cursor-blink 0.8s step-start infinite;
+    color: #7b2ff7;
+}
+
+@keyframes cursor-blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .twitch-support {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(150, 60, 255, 0.3);
@@ -235,6 +264,13 @@ body {
     letter-spacing: 1px;
     color: #fff;
     text-shadow: 0 0 12px rgba(150, 60, 255, 0.5);
+    transition: text-shadow 0.3s ease;
+}
+
+.center-title:hover,
+.pc-title:hover,
+.section-title:hover {
+    text-shadow: 0 0 24px rgba(123, 47, 247, 0.95), 0 0 40px rgba(123, 47, 247, 0.6);
 }
 
 .section-title {
@@ -284,6 +320,40 @@ body {
     background: rgba(145, 70, 255, 0.15);
 }
 
+.stream-meta {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 2px;
+}
+
+.live-badge {
+    display: none;
+    margin-right: 8px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #fff;
+    background: #e91916;
+    box-shadow: 0 0 10px rgba(233, 25, 22, 0.8);
+    vertical-align: middle;
+    animation: live-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes live-pulse {
+    0%, 100% {
+        box-shadow: 0 0 6px rgba(233, 25, 22, 0.6);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 16px rgba(233, 25, 22, 1);
+        transform: scale(1.08);
+    }
+}
+
 .stream-status {
     display: inline-block;
     width: 10px;
@@ -331,10 +401,154 @@ body {
     }
 }
 
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .streamers a:hover {
     transform: translateX(4px);
     background: rgba(145, 70, 255, 0.25);
     color: #fff;
+}
+
+.pc-block {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(150, 60, 255, 0.3);
+    border-radius: 20px;
+    padding: 28px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 400px;
+    text-align: left;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(150, 60, 255, 0.15);
+}
+
+.pc-title {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    text-shadow: 0 0 12px rgba(150, 60, 255, 0.5);
+}
+
+.pc-title .icon {
+    color: #7b2ff7;
+}
+
+.specs {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.specs li {
+    font-size: 14px;
+    color: #d3c4ff;
+    padding: 10px 14px;
+    background: rgba(145, 70, 255, 0.08);
+    border: 1px solid rgba(145, 70, 255, 0.25);
+    border-radius: 8px;
+}
+
+.specs li span {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: #7b2ff7;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.about-block {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(150, 60, 255, 0.3);
+    border-radius: 20px;
+    padding: 28px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(150, 60, 255, 0.15);
+}
+
+.about-text {
+    font-size: 15px;
+    color: #d3c4ff;
+    margin-bottom: 14px;
+}
+
+.deaf-tag {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    background: linear-gradient(135deg, #7b2ff7, #2d0a4e);
+    border: 1px solid rgba(150, 60, 255, 0.5);
+    box-shadow: 0 0 14px rgba(123, 47, 247, 0.5);
+}
+
+.cs2-block {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(150, 60, 255, 0.3);
+    border-radius: 20px;
+    padding: 28px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 400px;
+    text-align: left;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(150, 60, 255, 0.15);
+}
+
+.cs2-code {
+    display: block;
+    margin: 8px 0;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    word-break: break-all;
+    color: #ffb800;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 184, 0, 0.3);
+}
+
+.copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border: 1px solid rgba(150, 60, 255, 0.5);
+    border-radius: 8px;
+    background: linear-gradient(135deg, #7b2ff7, #2d0a4e);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.copy-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.15);
 }
 
 .soon {
@@ -343,11 +557,56 @@ body {
     color: rgba(255, 255, 255, 0.5);
     text-transform: uppercase;
     letter-spacing: 2px;
+    animation: soon-pulse 1.6s ease-in-out infinite;
 }
 
-@media (max-width: 480px) {
-    .profile {
+@keyframes soon-pulse {
+    0%, 100% {
+        opacity: 0.35;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.twitch-support,
+.pc-block,
+.about-block,
+.cs2-block {
+    flex: 0 0 400px;
+    width: 400px;
+    height: 500px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+.twitch-support::-webkit-scrollbar {
+    width: 8px;
+}
+
+.twitch-support::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 10px;
+}
+
+.twitch-support::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #7b2ff7, #2d0a4e);
+    border-radius: 10px;
+}
+
+.twitch-support::-webkit-scrollbar-thumb:hover {
+    background: #7b2ff7;
+}
+
+@media (max-width: 540px) {
+    .profile,
+    .twitch-support,
+    .pc-block,
+    .about-block,
+    .cs2-block {
+        width: 100%;
+        height: auto;
+        min-height: 400px;
         padding: 28px;
-        margin: 16px;
     }
 }

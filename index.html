@@ -13,7 +13,7 @@
             <img src="img/666.png" alt="Avatar">
         </div>
         <h1 class="name">DeafDenis2</h1>
-        <p class="bio">Добро пожаловать в мой профиль</p>
+        <p class="bio"><span id="bio-text"></span><span class="cursor">|</span></p>
 
         <div class="links">
             <a class="button steam" id="steam-btn" href="https://steamcommunity.com/id/DeafDenis2Official/" target="_blank" rel="noopener">
@@ -22,23 +22,27 @@
             <a class="button telegram" href="https://t.me/DeafDenis2Official" target="_blank" rel="noopener">
                 <i class="fa-brands fa-telegram icon"></i> Telegram Канал D2Official
             </a>
+            <a class="button telegram" href="https://t.me/DeafDenis2YT_777" target="_blank" rel="noopener">
+                <i class="fa-brands fa-telegram icon"></i> Telegram в ЛС: @DeafDenis2YT_777
+            </a>
             <a class="button donation" href="https://www.donationalerts.com/r/deafdenis2_twitch" target="_blank" rel="noopener">
                 <i class="fa-solid fa-circle-dollar-to-slot icon"></i> Поддержка Донат
             </a>
         </div>
     </main>
 
-    <section class="twitch-support">
+    <div class="blocks">
+    <section class="twitch-support reveal">
         <h2 class="center-title">TWITCH DEAF</h2>
         <h3 class="section-title"><i class="fa-brands fa-twitch icon"></i> DEAF — Поддержка TWITCH</h3>
         <ul class="streamers">
-            <li><a href="https://www.twitch.tv/tasmadan" target="_blank" rel="noopener"><img class="stream-avatar" data-name="tasmadan" alt=""><span class="stream-status" data-name="tasmadan"></span>Tasmadan</a></li>
-            <li><a href="https://www.twitch.tv/lediya112" target="_blank" rel="noopener"><img class="stream-avatar" data-name="lediya112" alt=""><span class="stream-status" data-name="lediya112"></span>LeDiya112</a></li>
-            <li><a href="https://www.twitch.tv/kingbumixa" target="_blank" rel="noopener"><img class="stream-avatar" data-name="kingbumixa" alt=""><span class="stream-status" data-name="kingbumixa"></span>KingBumixa</a></li>
-            <li><a href="https://www.twitch.tv/sm1lezombie" target="_blank" rel="noopener"><img class="stream-avatar" data-name="sm1lezombie" alt=""><span class="stream-status" data-name="sm1lezombie"></span>Sm1lezombie</a></li>
-            <li><a href="https://www.twitch.tv/prokop1000" target="_blank" rel="noopener"><img class="stream-avatar" data-name="prokop1000" alt=""><span class="stream-status" data-name="prokop1000"></span>prokop1000</a></li>
-            <li><a href="https://www.twitch.tv/rlvan" target="_blank" rel="noopener"><img class="stream-avatar" data-name="rlvan" alt=""><span class="stream-status" data-name="rlvan"></span>Rlvan</a></li>
-            <li><a href="https://www.twitch.tv/baksash" target="_blank" rel="noopener"><img class="stream-avatar" data-name="baksash" alt=""><span class="stream-status" data-name="baksash"></span>BakSash</a></li>
+            <li><a href="https://www.twitch.tv/tasmadan" target="_blank" rel="noopener"><img class="stream-avatar" data-name="tasmadan" alt=""><span class="stream-status" data-name="tasmadan"></span><span class="live-badge" data-name="tasmadan">LIVE</span>Tasmadan<span class="stream-meta" data-name="tasmadan"></span></a></li>
+            <li><a href="https://www.twitch.tv/lediya112" target="_blank" rel="noopener"><img class="stream-avatar" data-name="lediya112" alt=""><span class="stream-status" data-name="lediya112"></span><span class="live-badge" data-name="lediya112">LIVE</span>LeDiya112<span class="stream-meta" data-name="lediya112"></span></a></li>
+            <li><a href="https://www.twitch.tv/kingbumixa" target="_blank" rel="noopener"><img class="stream-avatar" data-name="kingbumixa" alt=""><span class="stream-status" data-name="kingbumixa"></span><span class="live-badge" data-name="kingbumixa">LIVE</span>KingBumixa<span class="stream-meta" data-name="kingbumixa"></span></a></li>
+            <li><a href="https://www.twitch.tv/sm1lezombie" target="_blank" rel="noopener"><img class="stream-avatar" data-name="sm1lezombie" alt=""><span class="stream-status" data-name="sm1lezombie"></span><span class="live-badge" data-name="sm1lezombie">LIVE</span>Sm1lezombie<span class="stream-meta" data-name="sm1lezombie"></span></a></li>
+            <li><a href="https://www.twitch.tv/prokop1000" target="_blank" rel="noopener"><img class="stream-avatar" data-name="prokop1000" alt=""><span class="stream-status" data-name="prokop1000"></span><span class="live-badge" data-name="prokop1000">LIVE</span>prokop1000<span class="stream-meta" data-name="prokop1000"></span></a></li>
+            <li><a href="https://www.twitch.tv/rlvan" target="_blank" rel="noopener"><img class="stream-avatar" data-name="rlvan" alt=""><span class="stream-status" data-name="rlvan"></span><span class="live-badge" data-name="rlvan">LIVE</span>Rlvan<span class="stream-meta" data-name="rlvan"></span></a></li>
+            <li><a href="https://www.twitch.tv/baksash" target="_blank" rel="noopener"><img class="stream-avatar" data-name="baksash" alt=""><span class="stream-status" data-name="baksash"></span><span class="live-badge" data-name="baksash">LIVE</span>BakSash<span class="stream-meta" data-name="baksash"></span></a></li>
         </ul>
         <p class="soon">Soon...</p>
         <div class="status-loading" id="status-loading">
@@ -47,10 +51,51 @@
         </div>
     </section>
 
+    <section class="pc-block reveal">
+        <h2 class="pc-title"><i class="fa-solid fa-computer icon"></i> Мой ПК</h2>
+        <ul class="specs">
+            <li><span>Мышь:</span> Razer VIPER v3 PRO WHITE EDITION</li>
+            <li><span>Видеокарта:</span> MSI GeForce RTX 3070 GAMING TRIO PLUS - 8GB</li>
+            <li><span>Материнская плата:</span> ASUS TUF B450M-PRO GAMING</li>
+            <li><span>Оперативная память:</span> ОЗУ 32 Гб</li>
+            <li><span>Процессор:</span> AMD Ryzen 7 2700</li>
+        </ul>
+    </section>
+
+    <section class="about-block reveal">
+        <h2 class="pc-title"><i class="fa-brands fa-adobe icon"></i> Adobe Premiere Pro</h2>
+        <p class="about-text">Я занимаюсь видеоредактор по Adobe Premiere Pro</p>
+        <span class="deaf-tag">только DEAF</span>
+    </section>
+
+    <section class="cs2-block reveal">
+        <h2 class="pc-title"><i class="fa-solid fa-crosshairs icon"></i> Мой настройки CS2</h2>
+        <ul class="specs">
+            <li>
+                <span>Прицел (Crosshair)</span>
+                <code class="cs2-code" id="crosshair-code">CSGO-nSuH9-uCsJR-LxuN9-nui7d-xGCEB</code>
+                <button class="copy-btn" id="copy-crosshair" type="button"><i class="fa-solid fa-copy icon"></i> Скопировать</button>
+            </li>
+            <li><span>Sensitivity</span>3.09</li>
+        </ul>
+    </section>
+    </div>
+
     <script>
         var statusEls = document.querySelectorAll(".stream-status");
         var loading = document.getElementById("status-loading");
         var done = 0;
+
+        var bioText = "Добро пожаловать в мой профиль";
+        var bioEl = document.getElementById("bio-text");
+        var i = 0;
+        var typeTimer = setInterval(function () {
+            bioEl.textContent = bioText.slice(0, i);
+            i++;
+            if (i > bioText.length) {
+                clearInterval(typeTimer);
+            }
+        }, 60);
 
         statusEls.forEach(function (el) {
             fetch("https://api.ivr.fi/v2/twitch/user?login=" + el.dataset.name)
@@ -60,13 +105,26 @@
                 .then(function (data) {
                     var user = data[0];
                     var avatar = document.querySelector('.stream-avatar[data-name="' + el.dataset.name + '"]');
+                    var meta = document.querySelector('.stream-meta[data-name="' + el.dataset.name + '"]');
+                    var badge = document.querySelector('.live-badge[data-name="' + el.dataset.name + '"]');
                     if (user && user.logo && avatar) {
                         avatar.src = user.logo;
                     }
+                    if (user && meta) {
+                        var year = user.createdAt ? user.createdAt.slice(0, 4) : "";
+                        var foll = user.followers != null ? user.followers.toLocaleString("ru-RU") : "—";
+                        meta.textContent = " • " + foll + " фолл." + (year ? " • " + year : "");
+                    }
                     if (user && user.stream) {
                         el.classList.add("online");
+                        if (badge) {
+                            badge.style.display = "inline-block";
+                        }
                     } else {
                         el.classList.add("offline");
+                        if (badge) {
+                            badge.style.display = "none";
+                        }
                     }
                 })
                 .catch(function () {
@@ -79,13 +137,38 @@
                     }
                 });
         });
+    </script>
 
-        function checkDone() {
-            done++;
-            if (done >= statusEls.length) {
-                loading.style.display = "none";
-            }
+    <script>
+        var revealEls = document.querySelectorAll(".reveal");
+        if ("IntersectionObserver" in window) {
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            revealEls.forEach(function (el) {
+                observer.observe(el);
+            });
+        } else {
+            revealEls.forEach(function (el) {
+                el.classList.add("visible");
+            });
         }
+
+        document.getElementById("copy-crosshair").addEventListener("click", function () {
+            var code = document.getElementById("crosshair-code").textContent;
+            var btn = this;
+            navigator.clipboard.writeText(code).then(function () {
+                btn.textContent = "Скопировано!";
+                setTimeout(function () {
+                    btn.innerHTML = '<i class="fa-solid fa-copy icon"></i> Скопировать';
+                }, 2000);
+            });
+        });
     </script>
 
     <script>
