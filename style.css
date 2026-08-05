@@ -29,20 +29,12 @@ body {
 .blocks {
     position: relative;
     z-index: 1;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 400px));
     justify-content: center;
     gap: 20px;
     width: 100%;
     max-width: 1300px;
-}
-
-#matrix {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
 }
 
 .profile {
@@ -251,7 +243,7 @@ body {
     box-sizing: border-box;
     width: 100%;
     max-width: 400px;
-    text-align: right;
+    text-align: center;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(150, 60, 255, 0.15);
 }
 
@@ -259,7 +251,7 @@ body {
     font-size: 20px;
     font-weight: 800;
     margin-bottom: 4px;
-    text-align: right;
+    text-align: center;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: #fff;
@@ -279,7 +271,7 @@ body {
     margin-bottom: 16px;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 10px;
     color: #fff;
 }
@@ -381,7 +373,7 @@ body {
     color: rgba(255, 255, 255, 0.6);
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 8px;
 }
 
@@ -553,6 +545,7 @@ body {
 
 .soon {
     margin-top: 14px;
+    text-align: center;
     font-size: 14px;
     color: rgba(255, 255, 255, 0.5);
     text-transform: uppercase;
@@ -571,38 +564,31 @@ body {
 
 .twitch-support,
 .pc-block,
-.about-block,
 .cs2-block {
-    flex: 0 0 400px;
     width: 400px;
     height: 500px;
     overflow-y: auto;
     scroll-behavior: smooth;
 }
 
+.twitch-support {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
 .twitch-support::-webkit-scrollbar {
-    width: 8px;
-}
-
-.twitch-support::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.04);
-    border-radius: 10px;
-}
-
-.twitch-support::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #7b2ff7, #2d0a4e);
-    border-radius: 10px;
-}
-
-.twitch-support::-webkit-scrollbar-thumb:hover {
-    background: #7b2ff7;
+    width: 0;
+    height: 0;
 }
 
 @media (max-width: 540px) {
+    .blocks {
+        grid-template-columns: 1fr;
+    }
+
     .profile,
     .twitch-support,
     .pc-block,
-    .about-block,
     .cs2-block {
         width: 100%;
         height: auto;
