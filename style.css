@@ -18,12 +18,21 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 20px;
     padding: 16px;
     font-family: "Segoe UI", Arial, "Noto Color Emoji", sans-serif;
     background: linear-gradient(135deg, #2d0a4e 0%, #1a0b2e 50%, #000 100%);
     color: #fff;
+}
+
+.profile {
+    margin-top: auto;
+}
+
+.michael-lock,
+.michael-block {
+    margin-bottom: auto;
 }
 
 .blocks {
