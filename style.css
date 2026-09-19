@@ -607,8 +607,7 @@ body {
 
 .twitch-support,
 .pc-block,
-.cs2-block,
-.download-block {
+.cs2-block {
     width: 400px;
     height: auto;
     max-height: 500px;
@@ -634,6 +633,7 @@ body {
     box-sizing: border-box;
     width: 100%;
     max-width: 400px;
+    height: auto;
     text-align: center;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(150, 60, 255, 0.15);
 }
@@ -706,8 +706,7 @@ body {
     .profile,
     .twitch-support,
     .pc-block,
-    .cs2-block,
-    .download-block {
+    .cs2-block {
         width: 100%;
         height: auto;
         min-height: 400px;
