@@ -46,7 +46,7 @@ body {
     border-radius: 20px;
     padding: 24px;
     width: 400px;
-    height: 500px;
+    height: auto;
     text-align: center;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(150, 60, 255, 0.15);
 }
@@ -99,7 +99,7 @@ body {
     font-size: 28px;
     font-weight: 700;
     margin-bottom: 6px;
-    animation: blink 1.2s step-start infinite;
+    animation: blink 2s ease-in-out infinite;
     background: linear-gradient(90deg, #7b2ff7, #66c0f4, #7b2ff7);
     background-size: 200% auto;
     -webkit-background-clip: text;
@@ -108,18 +108,47 @@ body {
 }
 
 @keyframes blink {
-    0%, 50% {
+    0%, 100% {
         opacity: 1;
     }
-    51%, 100% {
-        opacity: 0.2;
+    50% {
+        opacity: 0.15;
     }
 }
 
 .bio {
     font-size: 15px;
     color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+}
+
+.version {
+    margin-bottom: 20px;
+}
+
+.version-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #7b2ff7;
+    background: rgba(123, 47, 247, 0.15);
+    border: 1px solid rgba(123, 47, 247, 0.4);
+    animation: version-blink 1.6s ease-in-out infinite;
+}
+
+@keyframes version-blink {
+    0%, 100% {
+        opacity: 1;
+        box-shadow: 0 0 8px rgba(123, 47, 247, 0.6);
+    }
+    50% {
+        opacity: 0.3;
+        box-shadow: none;
+    }
 }
 
 .links {
@@ -164,6 +193,12 @@ body {
 .button.donation {
     background: #ff6b00;
     border: 2px solid #e05f00;
+}
+
+.button.download {
+    background: #2ecc71;
+    border: 3px solid #1e9e52;
+    box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.35), 0 0 18px rgba(46, 204, 113, 0.5);
 }
 
 .donate-amounts {
@@ -572,9 +607,11 @@ body {
 
 .twitch-support,
 .pc-block,
-.cs2-block {
+.cs2-block,
+.download-block {
     width: 400px;
-    height: 500px;
+    height: auto;
+    max-height: 500px;
     overflow-y: auto;
     scroll-behavior: smooth;
 }
@@ -589,6 +626,78 @@ body {
     height: 0;
 }
 
+.download-block {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(150, 60, 255, 0.3);
+    border-radius: 20px;
+    padding: 28px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(150, 60, 255, 0.15);
+}
+
+.download-block .about-text {
+    margin-bottom: 18px;
+}
+
+.michael-lock {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 400px;
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(150, 60, 255, 0.3);
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+}
+
+.michael-lock i {
+    color: #7b2ff7;
+    font-size: 16px;
+}
+
+.michael-lock input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 14px;
+    width: 100%;
+    padding: 4px 0;
+}
+
+.michael-lock input::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.michael-block {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(150, 60, 255, 0.3);
+    border-radius: 20px;
+    padding: 28px;
+    box-sizing: border-box;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(150, 60, 255, 0.15);
+    display: none;
+}
+
+.michael-block.visible {
+    display: block;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.6s ease forwards;
+}
+
 @media (max-width: 540px) {
     .blocks {
         grid-template-columns: 1fr;
@@ -597,7 +706,8 @@ body {
     .profile,
     .twitch-support,
     .pc-block,
-    .cs2-block {
+    .cs2-block,
+    .download-block {
         width: 100%;
         height: auto;
         min-height: 400px;
